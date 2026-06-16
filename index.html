@@ -675,30 +675,39 @@
         <button class="tab-btn" onclick="openPanel('english', 'grammarPanel', this)">Grammar</button>
         <button class="tab-btn" onclick="openPanel('english', 'readingPanel', this)">Reading</button>
       </div>
+<div class="panel active" id="listenPanel">
 
-      <div class="panel active" id="listenPanel">
-        <div class="audio-card">
-          <h3>Text 7</h3>
-          <audio controls preload="metadata">
-            <source src="TEXT 7 - АУДИО.mp3" type="audio/mpeg">
-          </audio>
-        </div>
+  <div class="audio-card">
+    <h3>Text 7</h3>
+    <audio controls preload="metadata">
+      <source src="TEXT 7 - АУДИО.mp3" type="audio/mpeg">
+    </audio>
+    <p style="margin:8px 0 0;color:#667085;font-size:14px;">
+      1–8 сұрақтар Text 7 аудиосына қатысты.
+    </p>
+  </div>
 
-        <div class="audio-card">
-          <h3>Text 8</h3>
-          <audio controls preload="metadata">
-            <source src="TEXT 8 - АУДИО.mp3" type="audio/mpeg">
-          </audio>
-        </div>
+  <div id="listeningTestPart1" class="test-grid"></div>
 
-        <div id="listeningTest" class="test-grid"></div>
+  <div class="audio-card">
+    <h3>Text 8</h3>
+    <audio controls preload="metadata">
+      <source src="TEXT 8 - АУДИО.mp3" type="audio/mpeg">
+    </audio>
+    <p style="margin:8px 0 0;color:#667085;font-size:14px;">
+      9–16 сұрақтар Text 8 аудиосына қатысты.
+    </p>
+  </div>
 
-        <div class="controls">
-          <button class="main-btn" onclick="checkTest('listening')">Жауаптарды тексеру</button>
-          <button class="ghost-btn" onclick="resetTest('listening')">Қайта бастау</button>
-        </div>
-        <div id="listeningResult" class="result"></div>
-      </div>
+  <div id="listeningTestPart2" class="test-grid"></div>
+
+  <div class="controls">
+    <button class="main-btn" onclick="checkTest('listening')">Жауаптарды тексеру</button>
+    <button class="ghost-btn" onclick="resetTest('listening')">Қайта бастау</button>
+  </div>
+
+  <div id="listeningResult" class="result"></div>
+</div>
 
       <div class="panel" id="grammarPanel">
         <div id="grammarTest" class="test-grid"></div>
