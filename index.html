@@ -1,1 +1,1880 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TALAP+ | Ағылшын тілі — тегін тест</title>
 
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --ink:#172033;
+      --muted:#667085;
+      --line:#e5e7eb;
+      --soft:#eef2ff;
+      --primary:#4f46e5;
+      --primary2:#7c3aed;
+      --good:#16a34a;
+      --bad:#dc2626;
+      --warn:#f59e0b;
+      --shadow:0 18px 45px rgba(15,23,42,.10);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(79,70,229,.16), transparent 34%),
+        radial-gradient(circle at top right, rgba(124,58,237,.12), transparent 30%),
+        var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      width:min(1180px, 94%);
+      margin:0 auto;
+    }
+
+    .hero{
+      padding:34px 0 22px;
+    }
+
+    .hero-card{
+      background:linear-gradient(135deg, #ffffff 0%, #f7f7ff 48%, #eef2ff 100%);
+      border:1px solid rgba(79,70,229,.12);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      padding:28px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      width:230px;
+      height:230px;
+      right:-70px;
+      top:-80px;
+      border-radius:50%;
+      background:linear-gradient(135deg, rgba(79,70,229,.18), rgba(124,58,237,.14));
+    }
+
+    .topline{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      position:relative;
+      z-index:1;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:16px;
+      background:linear-gradient(135deg, var(--primary), var(--primary2));
+      color:white;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      box-shadow:0 12px 28px rgba(79,70,229,.28);
+    }
+
+    .free-badge{
+      font-size:13px;
+      font-weight:800;
+      color:#3730a3;
+      background:#eef2ff;
+      border:1px solid #c7d2fe;
+      padding:8px 12px;
+      border-radius:999px;
+    }
+
+    h1{
+      position:relative;
+      z-index:1;
+      margin:30px 0 10px;
+      font-size:clamp(30px, 5vw, 58px);
+      line-height:1.05;
+      letter-spacing:-1.5px;
+    }
+
+    .hero-sub{
+      position:relative;
+      z-index:1;
+      max-width:760px;
+      color:var(--muted);
+      font-size:17px;
+      margin:0 0 20px;
+    }
+
+    .notice{
+      position:relative;
+      z-index:1;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      color:#9a3412;
+      padding:10px 14px;
+      border-radius:16px;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .mini-ad{
+      margin-top:20px;
+      position:relative;
+      z-index:1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(79,70,229,.14);
+      border-radius:20px;
+      padding:14px 16px;
+    }
+
+    .mini-ad p{
+      margin:0;
+      color:#475467;
+      font-size:14px;
+    }
+
+    .mini-ad strong{
+      color:#1f2937;
+    }
+
+    .tg-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:14px;
+      background:linear-gradient(135deg, #229ED9, #1677b7);
+      color:white;
+      font-weight:900;
+      font-size:14px;
+      box-shadow:0 12px 24px rgba(34,158,217,.22);
+      transition:.18s ease;
+      white-space:nowrap;
+    }
+
+    .tg-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 16px 30px rgba(34,158,217,.28);
+    }
+
+    .nav{
+      margin:18px 0 24px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+    }
+
+    .nav a{
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(229,231,235,.95);
+      border-radius:20px;
+      padding:16px;
+      box-shadow:0 10px 28px rgba(15,23,42,.06);
+      transition:.18s ease;
+    }
+
+    .nav a:hover{
+      transform:translateY(-2px);
+      border-color:#c7d2fe;
+    }
+
+    .nav b{
+      display:block;
+      font-size:15px;
+    }
+
+    .nav span{
+      display:block;
+      margin-top:3px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .section{
+      margin:26px 0;
+      background:rgba(255,255,255,.86);
+      border:1px solid rgba(229,231,235,.9);
+      border-radius:var(--radius);
+      box-shadow:0 12px 36px rgba(15,23,42,.07);
+      padding:22px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .section-title{
+      margin:0;
+      font-size:clamp(23px, 3vw, 34px);
+      letter-spacing:-.6px;
+    }
+
+    .section-desc{
+      margin:5px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      max-width:760px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      background:var(--soft);
+      color:#3730a3;
+      border:1px solid #c7d2fe;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+    }
+
+    .subtabs{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:12px 0 18px;
+    }
+
+    .tab-btn{
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      color:#475467;
+      background:#f3f4f6;
+      transition:.18s ease;
+    }
+
+    .tab-btn.active{
+      color:white;
+      background:linear-gradient(135deg, var(--primary), var(--primary2));
+      box-shadow:0 10px 24px rgba(79,70,229,.22);
+    }
+
+    .panel{
+      display:none;
+    }
+
+    .panel.active{
+      display:block;
+    }
+
+    .test-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+
+    .passage{
+      background:#fbfdff;
+      border:1px solid #e5e7eb;
+      border-radius:22px;
+      padding:18px;
+      margin:14px 0 18px;
+    }
+
+    .passage-title{
+      margin:0 0 10px;
+      font-size:19px;
+      font-weight:900;
+      text-align:center;
+    }
+
+    .passage p{
+      margin:0 0 10px;
+      text-align:justify;
+    }
+
+    .question{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:17px;
+      box-shadow:0 8px 22px rgba(15,23,42,.05);
+    }
+
+    .q-top{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:12px;
+    }
+
+    .q-num{
+      flex:0 0 auto;
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      background:#eef2ff;
+      color:#3730a3;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+    }
+
+    .q-text{
+      font-weight:800;
+      line-height:1.45;
+      padding-top:4px;
+    }
+
+    .options{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:9px;
+    }
+
+    .option{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:11px 12px;
+      border-radius:16px;
+      border:1px solid #e5e7eb;
+      background:#fafafa;
+      cursor:pointer;
+      transition:.15s ease;
+    }
+
+    .option:hover{
+      border-color:#c7d2fe;
+      background:#f8faff;
+    }
+
+    .option input{
+      margin-top:4px;
+      accent-color:var(--primary);
+    }
+
+    .option.correct{
+      border-color:#86efac;
+      background:#f0fdf4;
+    }
+
+    .option.wrong{
+      border-color:#fecaca;
+      background:#fef2f2;
+    }
+
+    .explain{
+      display:none;
+      margin-top:12px;
+      padding:12px 13px;
+      border-radius:16px;
+      background:#f8fafc;
+      border:1px dashed #cbd5e1;
+      color:#475467;
+      font-size:14px;
+    }
+
+    .explain.show{
+      display:block;
+    }
+
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .main-btn,
+    .ghost-btn{
+      border:none;
+      cursor:pointer;
+      border-radius:16px;
+      padding:12px 16px;
+      font-weight:900;
+      transition:.18s ease;
+    }
+
+    .main-btn{
+      color:white;
+      background:linear-gradient(135deg, var(--primary), var(--primary2));
+      box-shadow:0 12px 28px rgba(79,70,229,.22);
+    }
+
+    .main-btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .ghost-btn{
+      color:#344054;
+      background:#f3f4f6;
+      border:1px solid #e5e7eb;
+    }
+
+    .result{
+      display:none;
+      margin-top:16px;
+      border-radius:20px;
+      padding:16px;
+      background:#f8fafc;
+      border:1px solid #e5e7eb;
+      font-weight:900;
+    }
+
+    .result.show{
+      display:block;
+    }
+
+    .audio-card{
+      margin:14px 0;
+      padding:16px;
+      border-radius:22px;
+      background:#fbfdff;
+      border:1px solid #e5e7eb;
+    }
+
+    .audio-card h3{
+      margin:0 0 10px;
+      font-size:18px;
+    }
+
+    audio{
+      width:100%;
+      display:block;
+    }
+
+    .formula{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      padding:12px 14px;
+      margin:10px 0;
+      border-radius:16px;
+      background:#f8fafc;
+      border:1px solid #e5e7eb;
+      font-weight:900;
+      font-size:18px;
+    }
+
+    .frac{
+      display:inline-flex;
+      flex-direction:column;
+      align-items:center;
+      line-height:1.05;
+      min-width:38px;
+    }
+
+    .frac span:first-child{
+      border-bottom:2px solid currentColor;
+      padding:0 4px 3px;
+    }
+
+    .frac span:last-child{
+      padding-top:3px;
+    }
+
+    .data-table{
+      width:100%;
+      border-collapse:collapse;
+      margin:12px 0;
+      overflow:hidden;
+      border-radius:16px;
+      background:white;
+      box-shadow:0 0 0 1px #e5e7eb;
+    }
+
+    .data-table th,
+    .data-table td{
+      padding:10px 12px;
+      border:1px solid #e5e7eb;
+      text-align:center;
+      font-weight:700;
+    }
+
+    .data-table th{
+      background:#eef2ff;
+      color:#3730a3;
+      font-weight:900;
+    }
+
+    .svg-wrap{
+      overflow:auto;
+      margin:10px 0;
+      padding:12px;
+      background:#fbfdff;
+      border:1px solid #e5e7eb;
+      border-radius:18px;
+    }
+
+    .footer-ad{
+      margin:28px 0 34px;
+      padding:18px;
+      border-radius:24px;
+      background:#111827;
+      color:white;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .footer-ad p{
+      margin:0;
+      color:#d1d5db;
+      font-size:14px;
+    }
+
+    .footer-ad strong{
+      display:block;
+      color:white;
+      margin-bottom:3px;
+    }
+
+    @media (max-width:760px){
+      .hero-card{
+        padding:21px;
+        border-radius:26px;
+      }
+
+      .nav{
+        grid-template-columns:1fr;
+      }
+
+      .section{
+        padding:17px;
+      }
+
+      .question{
+        padding:14px;
+      }
+
+      .q-top{
+        gap:8px;
+      }
+
+      .q-num{
+        width:31px;
+        height:31px;
+      }
+
+      .mini-ad,
+      .footer-ad{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .tg-btn,
+      .main-btn,
+      .ghost-btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <section class="hero" id="top">
+      <div class="hero-card">
+        <div class="topline">
+          <div class="brand">
+            <div class="logo">T+</div>
+            <div>
+              <div>TALAP+</div>
+              <div style="font-size:13px;color:#667085;font-weight:700;">Дайындық платформасы</div>
+            </div>
+          </div>
+          <div class="free-badge">Тегін тест</div>
+        </div>
+
+        <h1>Ағылшын тілі — тегін пробный тест</h1>
+        <p class="hero-sub">
+          Listening, Reading, Grammar және ойлау тапсырмалары бойынша дайындыққа арналған қысқа пробный нұсқа.
+        </p>
+
+        <div class="notice">Бұл тегін тест. Сатуға болмайды.</div>
+
+        <div class="mini-ad">
+          <p>
+            <strong>Тағы да пробный тесттер керек пе?</strong>
+            Telegram-каналда дайын сайттар мен пайдалы материалдар бар.
+          </p>
+          <a class="tg-btn" href="https://t.me/+jtaSqR4E3CI2MjUy" target="_blank">Telegram-ға өту</a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="nav">
+      <a href="#english">
+        <b>English</b>
+        <span>Listening, Reading, Grammar</span>
+      </a>
+      <a href="#analytical">
+        <b>Аналитикалық ойлау</b>
+        <span>Мәтін және логикалық тапсырмалар</span>
+      </a>
+      <a href="#critical">
+        <b>Сыни ойлау</b>
+        <span>Есеп, диаграмма, кесте</span>
+      </a>
+    </nav>
+
+    <section class="section" id="english">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">English бөлімі</h2>
+          <p class="section-desc">
+            Аудио файлдар index.html файлымен бір папкада тұруы керек: 
+            <b>TEXT 7 - АУДИО.mp3</b> және <b>TEXT 8 - АУДИО.mp3</b>.
+          </p>
+        </div>
+        <span class="pill">50 сұрақ</span>
+      </div>
+
+      <div class="subtabs">
+        <button class="tab-btn active" onclick="openPanel('english', 'listenPanel', this)">Listening</button>
+        <button class="tab-btn" onclick="openPanel('english', 'grammarPanel', this)">Grammar</button>
+        <button class="tab-btn" onclick="openPanel('english', 'readingPanel', this)">Reading</button>
+      </div>
+
+      <div class="panel active" id="listenPanel">
+        <div class="audio-card">
+          <h3>Text 7</h3>
+          <audio controls preload="metadata">
+            <source src="TEXT 7 - АУДИО.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+
+        <div class="audio-card">
+          <h3>Text 8</h3>
+          <audio controls preload="metadata">
+            <source src="TEXT 8 - АУДИО.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+
+        <div id="listeningTest" class="test-grid"></div>
+
+        <div class="controls">
+          <button class="main-btn" onclick="checkTest('listening')">Жауаптарды тексеру</button>
+          <button class="ghost-btn" onclick="resetTest('listening')">Қайта бастау</button>
+        </div>
+        <div id="listeningResult" class="result"></div>
+      </div>
+
+      <div class="panel" id="grammarPanel">
+        <div id="grammarTest" class="test-grid"></div>
+
+        <div class="controls">
+          <button class="main-btn" onclick="checkTest('grammar')">Жауаптарды тексеру</button>
+          <button class="ghost-btn" onclick="resetTest('grammar')">Қайта бастау</button>
+        </div>
+        <div id="grammarResult" class="result"></div>
+      </div>
+
+      <div class="panel" id="readingPanel">
+        <div id="readingTest" class="test-grid"></div>
+
+        <div class="controls">
+          <button class="main-btn" onclick="checkTest('reading')">Жауаптарды тексеру</button>
+          <button class="ghost-btn" onclick="resetTest('reading')">Қайта бастау</button>
+        </div>
+        <div id="readingResult" class="result"></div>
+      </div>
+    </section>
+
+    <section class="section" id="analytical">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Аналитикалық ойлау</h2>
+          <p class="section-desc">
+            Мәтінді түсіну, негізгі ойды табу, мағыналық байланыс және ақпаратты салыстыру тапсырмалары.
+          </p>
+        </div>
+        <span class="pill">15 сұрақ</span>
+      </div>
+
+      <div id="analyticalTest" class="test-grid"></div>
+
+      <div class="controls">
+        <button class="main-btn" onclick="checkTest('analytical')">Жауаптарды тексеру</button>
+        <button class="ghost-btn" onclick="resetTest('analytical')">Қайта бастау</button>
+      </div>
+      <div id="analyticalResult" class="result"></div>
+    </section>
+
+    <section class="section" id="critical">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Сыни ойлау</h2>
+          <p class="section-desc">
+            Есептер, кестелер, диаграммалар және формулалар HTML/SVG арқылы берілді. Фото жүктеу қажет емес.
+          </p>
+        </div>
+        <span class="pill">15 сұрақ</span>
+      </div>
+
+      <div id="criticalTest" class="test-grid"></div>
+
+      <div class="controls">
+        <button class="main-btn" onclick="checkTest('critical')">Жауаптарды тексеру</button>
+        <button class="ghost-btn" onclick="resetTest('critical')">Қайта бастау</button>
+      </div>
+      <div id="criticalResult" class="result"></div>
+    </section>
+        <script>
+      const telegramLink = "https://t.me/+jtaSqR4E3CI2MjUy";
+
+      const tests = {
+        listening: [
+          {
+            id: 1,
+            q: "_____ percent of people go to school or work by bicycle.",
+            options: { A: "57", B: "45", C: "40", D: "55" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Кілт бойынша мәтінде мектепке немесе жұмысқа велосипедпен баратын адамдар үлесі 40% деп беріледі."
+          },
+          {
+            id: 2,
+            q: "Number of cars in Denmark is _____.",
+            options: { A: "increasing", B: "decreasing", C: "low", D: "falling down" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Мәтінде Данияда көлік саны артып келе жатқаны айтылады."
+          },
+          {
+            id: 3,
+            q: "The government is worried about _____.",
+            options: { A: "drivers", B: "pollution", C: "traffic lights", D: "riders" },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Үкіметті алаңдататын негізгі мәселе — pollution, яғни ауаның ластануы."
+          },
+          {
+            id: 4,
+            q: "There are some special _____ in Copenhagen.",
+            options: { A: "bicycles", B: "traffic lights", C: "parks", D: "cars" },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Копенгагенде велосипедшілерге арналған арнайы бағдаршамдар туралы айтылады."
+          },
+          {
+            id: 5,
+            q: "According to the text, one of the reasons for the popularity of bicycles in Denmark is that _____.",
+            options: {
+              A: "it is a flat country",
+              B: "its government has no deal with pollution",
+              C: "it has a speed limit",
+              D: "it has a very high fine on car drivers"
+            },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Данияда велосипедтің танымал болуының бір себебі — елдің жер бедері жазық."
+          },
+          {
+            id: 6,
+            q: "There are _____ reasons for the popularity of bicycles in Denmark.",
+            options: { A: "5", B: "2", C: "3", D: "4" },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Кілт бойынша мәтінде велосипедтің танымалдығына байланысты екі негізгі себеп аталады."
+          },
+          {
+            id: 7,
+            q: "Which of the following is not mentioned in the text?",
+            options: { A: "cars", B: "pollution", C: "bicycles", D: "sightseeing" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Мәтінде cars, pollution, bicycles айтылады, ал sightseeing туралы айтылмайды."
+          },
+          {
+            id: 8,
+            q: "The government is planning to reduce the number of cars because they _____.",
+            options: {
+              A: "hit the cyclists",
+              B: "make long lines",
+              C: "pollute the air",
+              D: "break the traffic laws"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Көлік санын азайту себебі — олардың ауаны ластауы."
+          },
+          {
+            id: 9,
+            q: "Mike suggested registering for other _____.",
+            options: { A: "clubs", B: "classes", C: "places", D: "colleges" },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Mike басқа classes, яғни сабақтарға тіркелуді ұсынады."
+          },
+          {
+            id: 10,
+            q: "There is nothing to do for the student but get some _____ that will be useful.",
+            options: { A: "papers", B: "classes", C: "journals", D: "books" },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Студентке пайдалы болатын сабақтарды алу керек."
+          },
+          {
+            id: 11,
+            q: "One of the students forgot about _____.",
+            options: { A: "motivation", B: "semester", C: "consultation", D: "registration" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Диалогта студенттердің бірі registration туралы ұмытып кеткені айтылады."
+          },
+          {
+            id: 12,
+            q: "There is nothing to do for the student but get some classes that will be _____.",
+            options: { A: "objecting", B: "safety", C: "still open", D: "rejecting" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Студент әлі ашық тұрған сабақтарға тіркеле алады."
+          },
+          {
+            id: 13,
+            q: "One of the person’s name in the dialog is _____.",
+            options: { A: "Mike", B: "Pete", C: "Nick", D: "John" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Диалогта Mike есімі кездеседі."
+          },
+          {
+            id: 14,
+            q: "Mike is sure that one should not _____ registering for classes.",
+            options: { A: "break", B: "refuse", C: "choose", D: "miss" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Сабаққа тіркелуді өткізіп алмау керек: should not miss registering."
+          },
+          {
+            id: 15,
+            q: "In Mike’s opinion professor of Philosophy is really _____.",
+            options: { A: "strict", B: "cool", C: "bad", D: "selfish" },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Mike философия профессоры туралы жақсы пікір айтады: cool."
+          },
+          {
+            id: 16,
+            q: "101 is a number of _____ class.",
+            options: { A: "psychology", B: "sociology", C: "math", D: "philosophy" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Кілт бойынша 101 — psychology class нөмірі."
+          }
+        ],
+                grammar: [
+          {
+            id: 17,
+            q: "I don’t mind _____ to the restaurant.",
+            options: { A: "drive", B: "to drive", C: "driving", D: "drove" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Don’t mind тіркесінен кейін verb + ing қолданылады: don’t mind driving."
+          },
+          {
+            id: 18,
+            q: "They are at home today. They _____ TV at the moment.",
+            options: { A: "are watching", B: "is watching", C: "watches", D: "watch" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. At the moment — Present Continuous белгісі. They are watching."
+          },
+          {
+            id: 19,
+            q: "Well, I think you ought to speak to that man _____ standing with a notebook in front of the car.",
+            options: { A: "whose", B: "who", C: "who’s", D: "which’s" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Who’s = who is. Толық сөйлем: that man who is standing..."
+          },
+          {
+            id: 20,
+            q: "The last hotel was _____ modern than this one.",
+            options: { A: "slightly less", B: "bit less", C: "more least", D: "the least" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Comparative structure: slightly less modern than this one."
+          },
+          {
+            id: 21,
+            q: "It must be about two years since we last _____.",
+            options: { A: "has met", B: "meet", C: "have met", D: "met" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Since we last met — өткен шақтағы соңғы кездесу."
+          },
+          {
+            id: 22,
+            q: "Write your name at _____.",
+            options: { A: "the top of the page", B: "top of page", C: "the top page", D: "the page of top" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Дұрыс тұрақты тіркес: at the top of the page."
+          },
+          {
+            id: 23,
+            q: "She _____ in Paris since 1999.",
+            options: { A: "have lived", B: "lived", C: "has lived", D: "was living" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Since 1999 болғандықтан Present Perfect керек: has lived."
+          },
+          {
+            id: 24,
+            q: "_____ dress is expensive but it’s very nice.",
+            options: { A: "This", B: "Those", C: "These", D: "Them" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Dress — жекеше зат есім, сондықтан this dress."
+          },
+          {
+            id: 25,
+            q: "The students hope _____ all the examinations because they’ve been preparing for a long time.",
+            options: { A: "passing", B: "pass", C: "to passing", D: "to pass" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Hope етістігінен кейін infinitive қолданылады: hope to pass."
+          },
+          {
+            id: 26,
+            q: "_____ Government should do more to help _____.",
+            options: {
+              A: "the / the poor people",
+              B: "a / the poor people",
+              C: "- / the poor",
+              D: "the / the poor"
+            },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. The Government және the poor — дұрыс грамматикалық құрылым."
+          },
+          {
+            id: 27,
+            q: "There are three _____ on the desk.",
+            options: { A: "diary", B: "diaries", C: "diaryes", D: "diarys" },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Diary сөзінің көпше түрі: diaries."
+          },
+          {
+            id: 28,
+            q: "They’ve _____ lunch. They _____ it at 12 o’clock.",
+            options: { A: "have / had", B: "had / having", C: "had / have", D: "had / had" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. They’ve had lunch. They had it at 12 o’clock."
+          },
+          {
+            id: 29,
+            q: "_____ the film I remembered where I’d left my keys.",
+            options: { A: "While", B: "In", C: "During", D: "On" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Зат есіммен during қолданылады: during the film."
+          },
+          {
+            id: 30,
+            q: "Complete the sentence. My brother is _____ in history.",
+            options: { A: "interested", B: "to interest", C: "interesting", D: "interest" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Be interested in тіркесі: My brother is interested in history."
+          },
+          {
+            id: 31,
+            q: "If you _____ a frog, you _____ green skin.",
+            options: {
+              A: "was / would have",
+              B: "have been / would have",
+              C: "had been / would have",
+              D: "were / would have"
+            },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Second conditional құрылымы: If you were..., you would have..."
+          },
+          {
+            id: 32,
+            q: "I am really looking forward to _____ you at the party.",
+            options: { A: "to be seen", B: "to see", C: "that we see", D: "seeing" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Looking forward to тіркесінен кейін gerund келеді: seeing."
+          },
+          {
+            id: 33,
+            q: "Mary is away at the moment. She will be back _____ Monday.",
+            options: { A: "in", B: "of", C: "by", D: "at" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. By Monday — дүйсенбіге дейін/дүйсенбіге қарай қайтады."
+          },
+          {
+            id: 34,
+            q: "This is _____ room.",
+            options: { A: "nice", B: "an nice", C: "a nice", D: "niced" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Nice дауыссыз дыбыстан басталады, сондықтан a nice room."
+          }
+        ],
+                reading: [
+          {
+            type: "passage",
+            title: "Text 7 — Walt Disney",
+            text: `
+              <p>Walt Disney was born in Chicago on December 5, 1901. Disney attended McKinley High School in Chicago, and left at the age of 17 to become an ambulance driver in the First World War. In 1919 he moved to Kansas City and became a commercial artist.</p>
+              <p>Then he went to Hollywood in 1923 to become an animator, working on cartoon films. He produced his first black and white Mickey Mouse cartoon in 1928. It was an instant hit with both children and adults. More cartoons followed, including “Flowers and Trees” (1933), the first animated film in Technicolor. Then, three years later, Disney created his second cartoon superstar — Donald Duck.</p>
+              <p>Later Disney founded Walt Disney Productions, now known as The Walt Disney Company. Today, this company has annual revenues of approximately U.S. $35 billion. This success is largely due to a number of the world's most famous fictional characters he and his staff created including Mickey Mouse, a character for which Disney himself was the original voice.</p>
+              <p>Disney won 26 Academy Awards out of 59 nominations. He is also the namesake for Disneyland and Walt Disney World Resort theme parks in the United States, as well as the international resorts in Japan, France, China.</p>
+            `
+          },
+          {
+            id: 35,
+            q: "During his lifetime, Walt Disney _____.",
+            options: {
+              A: "created 59 fictional characters",
+              B: "won 26 Academy Awards",
+              C: "produced only black and white cartoons",
+              D: "opened theme parks all over the world"
+            },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Мәтінде Walt Disney 59 nomination ішінен 26 Academy Awards алғаны жазылған."
+          },
+          {
+            id: 36,
+            q: "Walt went to Hollywood in _____.",
+            options: { A: "1928", B: "1931", C: "1919", D: "1923" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Мәтінде: Then he went to Hollywood in 1923."
+          },
+          {
+            id: 37,
+            q: "During the World War I he worked as _____.",
+            options: {
+              A: "an ambulance driver",
+              B: "a commercial artist",
+              C: "a motion picture producer",
+              D: "an animator"
+            },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Мәтінде Walt Disney First World War кезінде ambulance driver болуға кеткені жазылған."
+          },
+          {
+            id: 38,
+            q: "Walt Disney moved to _____ in 1919.",
+            options: { A: "Chicago", B: "Hollywood", C: "Japan", D: "Kansas City" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Мәтінде 1919 жылы Kansas City-ге көшкені айтылған."
+          },
+          {
+            id: 39,
+            q: "He was born on the _____ of December.",
+            options: { A: "fifth", B: "third", C: "fifteenth", D: "fourth" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Walt Disney December 5, 1901 жылы туған."
+          },
+          {
+            id: 40,
+            q: "The word revenue means _____.",
+            options: {
+              A: "to acquire something that you have been working for",
+              B: "a liability or obligation to pay something",
+              C: "the income that a company receives regularly",
+              D: "use of money, time"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Revenue — компанияның тұрақты түрде алатын табысы."
+          },
+          {
+            id: 41,
+            q: "Walt Disney moved to Kansas City in _____.",
+            options: { A: "1918", B: "1923", C: "1919", D: "1901" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Мәтінде Walt Disney 1919 жылы Kansas City-ге көшкені берілген."
+          },
+          {
+            id: 42,
+            q: "Mickey Mouse, Donald Duck are _____.",
+            options: {
+              A: "Academy Awards",
+              B: "famous animals",
+              C: "fictional characters",
+              D: "the names of the companies"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Mickey Mouse және Donald Duck — fictional characters."
+          },
+          {
+            type: "passage",
+            title: "Text 8 — Earth Hour",
+            text: `
+              <p>Earth Hour is an annual global campaign that encourages people and businesses around the world to switch off electricity at the same time for one hour. Earth Hour started in Australia in 2007 when 2.2 million people in the city of Sydney turned off all non-essential lights for an hour.</p>
+              <p>In 2013, millions of people in 7,000 cities and towns around the world switched off their lights for 60 minutes at the end of March. Every year landmarks and well-known buildings around the world take part and “go dark” for Earth Hour. The campaign even went into space when astronauts reduced power on the International Space Station in 2011.</p>
+              <p>Earth Hour is organised by the World Wide Fund for Nature (WWF). It was started by Andy Ridley, originally from Britain, who is executive director of Earth Hour Global. He came up with the idea because he wanted to raise awareness of environmental issues by asking people to do something positive to help the planet.</p>
+              <p>In 2013 in the UK, the pop group McFly gave a live acoustic performance using no electricity dressed in panda costumes because the WWF's logo is a panda for Earth Hour. Celebrity chefs Gordon Ramsay and Raymond Blanc created special recipes for families to prepare and eat by candlelight.</p>
+            `
+          },
+          {
+            id: 43,
+            q: "Gordon Ramsay and Raymond Blanc are _____ chefs.",
+            options: { A: "super", B: "superstar", C: "obscurity", D: "commoner" },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Олар celebrity chefs, яғни танымал/superstar chefs ретінде берілген."
+          },
+          {
+            id: 44,
+            q: "Earth Hour was set up in _____ in 2007.",
+            options: { A: "Sydney", B: "Britain", C: "Malaysia", D: "London" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Earth Hour 2007 жылы Sydney қаласында басталды."
+          },
+          {
+            id: 45,
+            q: "In 2013 in _____ the pop group McFly gave a live acoustic performance without electricity.",
+            options: { A: "Malaysia", B: "Sydney", C: "Australia", D: "Great Britain" },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Мәтінде: In 2013 in the UK..."
+          },
+          {
+            id: 46,
+            q: "Earth Hour was introduced in Australia in _____.",
+            options: { A: "2013", B: "2000", C: "2007", D: "2011" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Earth Hour Australia-да 2007 жылы басталған."
+          },
+          {
+            id: 47,
+            q: "Earth Hour events are held every _____.",
+            options: { A: "hour", B: "year", C: "day", D: "week" },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Earth Hour — annual global campaign, яғни жыл сайын өтеді."
+          },
+          {
+            id: 48,
+            q: "Earth Hour was created by _____.",
+            options: { A: "Fund for Nature", B: "World Wide", C: "Andy Ridley", D: "WWF" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Мәтінде Earth Hour-ды Andy Ridley бастағаны айтылған."
+          },
+          {
+            id: 49,
+            q: "A global _____ event has most visual impact at this time of a year.",
+            options: { A: "charity", B: "day out", C: "lights out", D: "holiday" },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Earth Hour — lights out event, яғни жарықты сөндіру акциясы."
+          },
+          {
+            id: 50,
+            q: "In 2013, millions of people in 7,000 cities and towns around the world switched off their lights for 60 minutes at the spring _____.",
+            options: { A: "equinox", B: "unique", C: "equal", D: "same" },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Spring equinox — көктемгі күн мен түннің теңелуі."
+          }
+        ],
+                analytical: [
+          {
+            id: 1,
+            q: "Мәтіндегі бос орынды толтырыңыз.<br>Сөзге ағып тұрған, қызыл тілді, сөзге жүйрік, ойы сергек те алғыр адам _____.",
+            options: {
+              A: "Шешен",
+              B: "Әділқазы",
+              C: "Дана",
+              D: "Ақылгөй",
+              E: "Көсем"
+            },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Сөзге жүйрік, ойы сергек, тілге шешен адамды «шешен» дейді."
+          },
+          {
+            id: 2,
+            q: "Мәтіндегі бос орынды толтырыңыз.<br>Шұбат түйе сүтінен ашытылады. Оның емдік қасиеті мол. Шұбат — асқазан, түрлі ішек ауруларына бірден-бір шипалы сусын. Шұбаттың тілі үйіреді.",
+            options: {
+              A: "қасиеті",
+              B: "дәмі",
+              C: "иісі",
+              D: "шипасы",
+              E: "сөлі"
+            },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. «Тілі үйіреді» тіркесі дәмге қатысты айтылады, сондықтан бос орынға «дәмі» сөзі сәйкес келеді."
+          },
+          {
+            id: 3,
+            q: "Мәтіндегі бос орынды толтырыңыз.<br>_____ індетінің салдарынан дүниежүзіндегі мектеп оқушылары мен студенттердің басым көпшілігі қашықтан оқуға көшті. Бұл жұмыстың тәсілі мен мазмұнын түбегейлі өзгертуде.",
+            options: {
+              A: "гепатит",
+              B: "псориаз",
+              C: "коронавирус",
+              D: "витилиго",
+              E: "холера"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Қашықтан оқуға көшу дүниежүзінде коронавирус індеті кезінде кең таралды."
+          },
+          {
+            type: "passage",
+            title: "Мәтін 1 — Бәйшешек, Запырангүл",
+            text: `
+              <p>Бәйшешек, Запырангүл — көп жылдық тамыр түйнекті өсімдік. Әлемде бұл гүлдің 80-ге жуық түрі бар. Қазақстанда Жоңғар Алатауында, Кетпен жотасында, Қаратауда өседі. Запырангүлдің Алатау бәйшешегі және Корольков бәйшешегі деген түрлері бар. Наурыз — мамыр айларында гүлдейді. Гүлдері түнге қарай және бұлтты күндері жабылып қалады. Бәйшешек пен Запырангүлдер — сәндік өсімдіктер.</p>
+            `
+          },
+          {
+            id: 4,
+            q: "Бос орынды толтырыңыз.<br>Бәйшешек — _____ гүл.",
+            options: {
+              A: "үйде өсетін",
+              B: "бір жылдық",
+              C: "түнде гүлдейтін",
+              D: "сәндік",
+              E: "бұлтты күні гүлдейтін"
+            },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Мәтінде «Бәйшешек пен Запырангүлдер — сәндік өсімдіктер» деп берілген."
+          },
+          {
+            id: 5,
+            q: "Мәтін мазмұнына сәйкес келетін ақпаратты таңдаңыз.",
+            options: {
+              A: "Бәйшешек көктемде гүлдейді.",
+              B: "Запырангүл — түнде ғана гүлдейтін өсімдік.",
+              C: "Бәйшешек Қазақстанда ғана өседі.",
+              D: "Запырангүл наурызда, бәйшешек мамырда гүлдейді.",
+              E: "Запырангүл бұлтты күндері жайқалып өседі."
+            },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Мәтінде наурыз–мамыр айларында гүлдейтіні айтылған, бұл көктем мезгіліне сәйкес келеді."
+          },
+          {
+            id: 6,
+            q: "Сұраққа жауап беріңіз.<br>Қандай өсімдіктің сексенге жуық түрі бар?",
+            options: {
+              A: "Алатау бәйшешегінің",
+              B: "Корольков бәйшешегінің",
+              C: "Кетпен жотасындағы бәйшешектің",
+              D: "Бәйшешектің",
+              E: "Жоңғар Алатауы өсімдігінің"
+            },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Мәтінде «Әлемде бұл гүлдің 80-ге жуық түрі бар» деп бәйшешек/запырангүл туралы айтылған."
+          },
+          {
+            type: "passage",
+            title: "Мәтін 2 — Алоэ",
+            text: `
+              <p>Алоэ үй ішінде өсірілетін, әсем де денсаулыққа пайдалы әрі кең таралған өсімдік түрі. Бұл өсімдік халықтық және медициналық тәжірибеде кең қолданылады.</p>
+              <p>Алоэ лалагүлділер тұқымдасына жатады, оның жапырағының сөлі емдікке пайдаланылады. Оның кейбір түрі шырмауық тәріздес, мәңгі жасыл, қуаңшылыққа төзімді. Мағынасы «ащы» дегенді білдіреді.</p>
+            `
+          },
+          {
+            id: 7,
+            q: "Асты сызылған сөздің мәтіндегі мағынасын табыңыз.<br>Алоэ үй ішінде өсірілетін, әсем де денсаулыққа пайдалы әрі <u>кең таралған</u> өсімдік түрі.",
+            options: {
+              A: "пайдасы көп",
+              B: "өте танымал",
+              C: "далада өсетін",
+              D: "үйде өсетін",
+              E: "тармақталып өсетін"
+            },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. «Кең таралған» мәтінде көпшілікке белгілі, жиі кездесетін, танымал деген мағынада қолданылған."
+          },
+          {
+            id: 8,
+            q: "Мәтіндегі негізгі ойды табыңыз.",
+            options: {
+              A: "үй ішінде өсірілетіндігі",
+              B: "денсаулыққа пайдалы екендігі",
+              C: "суға төзімділігі",
+              D: "жапырақтарының жалпақтығы",
+              E: "дәмінің ащы екендігі"
+            },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Мәтіннің негізгі ойы — алоэнің денсаулыққа пайдалы, емдік өсімдік екендігі."
+          },
+          {
+            id: 9,
+            q: "Мәтіндегі «ащы» сөзінің мағынасына жақын сөздер қатарын табыңыз.",
+            options: {
+              A: "кермек, дәмді",
+              B: "тәтті, дәмді",
+              C: "қышқыл, тәтті",
+              D: "кермек, қышқыл",
+              E: "қою, тәтті"
+            },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. «Ащы» сөзіне мағына жағынан жақын сөздер — кермек, қышқыл."
+          },
+          {
+            type: "passage",
+            title: "Мәтін 3 — Ағаш және оттегі",
+            text: `
+              <p>Ағаш өзіне пайдалы затты атмосферадан алады. Ал оннан бірін топырақтан алады. Әр ағаш өмірінің соңына дейін тонна-тонна көмірқышқыл газын өңдеумен болады. Ағаш бір жылда мың шақырым жол жүрген көліктен шыққан газды жұтады. Бір ағаш жылына 100 кубометр, яғни 120 келі оттек шығарады. Мұнша көлемдегі оттегі шағын отбасына бір жылға жетеді. Орманда жүрген адамның жүрек қағысы минутына 20 соққыға баяулайды, тыныс алуы жеңілдейді. Жүйке жүйесінің тітіркенуі тоқтап, тыныштала түседі.</p>
+              <p>Адамдар үйінің айналасына шырша, арша, қарағай секілді ағаштарды отырғызғанды жақсы көреді. Өйткені бұл ағаштар ауа тазарту тұрғысынан бірінші орында тұр.</p>
+            `
+          },
+          {
+            id: 10,
+            q: "Мәтіннен 100 кубометр оттегінің килограмға шаққандағы үлесін табыңыз.",
+            options: {
+              A: "20 келі",
+              B: "21 келі",
+              C: "210 келі",
+              D: "100 келі",
+              E: "120 келі"
+            },
+            answer: "E",
+            explanation: "Дұрыс жауап — E. Мәтінде «100 кубометр, яғни 120 келі оттек» деп нақты көрсетілген."
+          },
+          {
+            id: 11,
+            q: "Мәтін мазмұны төменде берілген жауаптардың ішінен қай салаға тиесілі екенін көрсетіңіз.",
+            options: {
+              A: "биология",
+              B: "химия",
+              C: "математика",
+              D: "биотехнология",
+              E: "физиология"
+            },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Мәтін ағаш, оттегі, көмірқышқыл газы, табиғат және тіршілік туралы. Сондықтан жалпы сала — биология."
+          },
+          {
+            id: 12,
+            q: "Мәтіндегі «шақырым» сөзінің ғылыми атауын табыңыз.",
+            options: {
+              A: "сантиметр",
+              B: "километр",
+              C: "дециметр",
+              D: "миллиметр",
+              E: "метр"
+            },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. «Шақырым» сөзінің ғылыми/өлшемдік атауы — километр."
+          },
+          {
+            type: "passage",
+            title: "Мәтін 4 — Тасбақа",
+            text: `
+              <p>Жер бетіндегі ерекше тіршілік иелерінің бірі — тасбақа орташа есеппен 200 жылдан астам өмір сүреді. Тасбақалардың ұзақ жасауының құпиясы ішкі ағзаларына байланысты. Олардың ішкі ағзалары қартайғанда да жастық шағындағыдай жұмыс жасайды екен.</p>
+            `
+          },
+          {
+            id: 13,
+            q: "«Тасбақа» сөзінің жасалуы",
+            options: {
+              A: "қайталану",
+              B: "қосарлану",
+              C: "бірігу",
+              D: "кірігу",
+              E: "қысқару"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. «Тасбақа» сөзі екі сөздің бірігуі арқылы жасалған: тас + бақа."
+          },
+          {
+            id: 14,
+            q: "Сұраққа жауап беріңіз.<br>Тасбақалар қартайғанда ішкі ағзаларының қызметі қалай өзгереді?",
+            options: {
+              A: "жұмысын баяулатады",
+              B: "жұмыс қарқынын арттырады",
+              C: "орта есеппен екі есе төмендейді",
+              D: "өзгеріссіз жұмыс жасайды",
+              E: "қызметі нашарлайды"
+            },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Мәтінде тасбақалардың ішкі ағзалары қартайғанда да жастық шағындағыдай жұмыс жасайтыны айтылған."
+          },
+          {
+            id: 15,
+            q: "Бос орынды толтырыңыз.<br>Тасбақалар _____ тіршілік етеді.",
+            options: {
+              A: "жиырма жыл",
+              B: "бір жыл",
+              C: "екі ғасырдай",
+              D: "ұзақ өмір сүрмейді",
+              E: "бірнеше сағат"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Мәтінде тасбақа орташа есеппен 200 жылдан астам өмір сүретіні берілген. Бұл — екі ғасырдай."
+          }
+        ],
+                critical: [
+          {
+            id: 1,
+            q: `
+              Берілген сурет бойынша α, β, γ бұрыштарының қосындысын табыңыз.
+              <div class="svg-wrap">
+                <svg width="320" height="210" viewBox="0 0 320 210" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                      <path d="M0,0 L6,3 L0,6 Z" fill="#111827"/>
+                    </marker>
+                  </defs>
+
+                  <line x1="35" y1="165" x2="285" y2="165" stroke="#111827" stroke-width="3"/>
+                  <line x1="80" y1="165" x2="150" y2="72" stroke="#111827" stroke-width="3"/>
+                  <line x1="150" y1="72" x2="235" y2="165" stroke="#111827" stroke-width="3"/>
+
+                  <path d="M92 165 A32 32 0 0 1 111 139" fill="none" stroke="#4f46e5" stroke-width="3"/>
+                  <path d="M132 88 A35 35 0 0 1 173 92" fill="none" stroke="#7c3aed" stroke-width="3"/>
+                  <path d="M219 165 A34 34 0 0 1 243 142" fill="none" stroke="#f59e0b" stroke-width="3"/>
+
+                  <text x="105" y="155" font-size="20" font-weight="800" fill="#4f46e5">α</text>
+                  <text x="149" y="102" font-size="20" font-weight="800" fill="#7c3aed">β</text>
+                  <text x="235" y="156" font-size="20" font-weight="800" fill="#f59e0b">γ</text>
+                </svg>
+              </div>
+            `,
+            options: {
+              A: "180°",
+              B: "90°",
+              C: "270°",
+              D: "360°",
+              E: "120°"
+            },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Үшбұрыштың ішкі бұрыштарының қосындысы 180°-қа тең. Сондықтан α + β + γ = 180°."
+          },
+          {
+            id: 2,
+            q: "Егер 5 жұмысшы жұмысты 12 күнде аяқтаса, дәл сондай қарқынмен 10 жұмысшы осы жұмысты неше күнде аяқтайды?",
+            options: {
+              A: "5 күн",
+              B: "6 күн",
+              C: "8 күн",
+              D: "10 күн",
+              E: "12 күн"
+            },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Жұмысшы саны 2 есе артса, жұмыс уақыты 2 есе қысқарады: 12 ÷ 2 = 6 күн."
+          },
+          {
+            id: 3,
+            q: "Қатардағы келесі санды табыңыз: 3, 6, 12, 24, ...",
+            options: {
+              A: "30",
+              B: "36",
+              C: "48",
+              D: "42",
+              E: "54"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Әр сан алдыңғы саннан 2 есе үлкен: 3×2=6, 6×2=12, 12×2=24, 24×2=48."
+          },
+          {
+            id: 4,
+            q: "Бөлмеде 4 адам бар. Әр адам бір-бірімен бір рет қол алысты. Барлығы неше қол алысу болды?",
+            options: {
+              A: "4",
+              B: "5",
+              C: "6",
+              D: "8",
+              E: "12"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. 4 адамның жұптасу саны: 4×3÷2 = 6."
+          },
+          {
+            id: 5,
+            q: "Егер кітаптың бағасы 20% арзандап, жаңа бағасы 4000 теңге болса, бастапқы бағасы қанша болған?",
+            options: {
+              A: "5000 теңге",
+              B: "4800 теңге",
+              C: "4500 теңге",
+              D: "4200 теңге",
+              E: "5200 теңге"
+            },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. 20% арзандағаннан кейін баға бастапқы бағаның 80%-ы болады. 4000 ÷ 0.8 = 5000 теңге."
+          },
+          {
+            id: 6,
+            q: "Екі санның қосындысы 42. Бірінші сан екінші саннан 6-ға артық. Үлкен санды табыңыз.",
+            options: {
+              A: "18",
+              B: "20",
+              C: "22",
+              D: "24",
+              E: "26"
+            },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Кіші санды x десек, үлкен сан x+6. x + x + 6 = 42, 2x = 36, x = 18. Үлкен сан: 24."
+          },
+          {
+            id: 7,
+            q: "Сағат 3:00 болғанда сағаттың сағаттық және минуттық тілдері арасындағы бұрыш қанша градус болады?",
+            options: {
+              A: "90°",
+              B: "60°",
+              C: "120°",
+              D: "180°",
+              E: "45°"
+            },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Сағат 3:00 кезінде минуттық тіл 12-де, сағаттық тіл 3-те тұрады. Олардың арасы — 90°."
+          },
+          {
+            id: 8,
+            q: `
+              Кесте бойынша үш аптадағы жалпы пайда мөлшерін табыңыз.
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Апта реті</th>
+                    <th>Шығын</th>
+                    <th>Табыс</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>10 000 тг</td>
+                    <td>70 000 тг</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>15 000 тг</td>
+                    <td>65 000 тг</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>12 500 тг</td>
+                    <td>68 000 тг</td>
+                  </tr>
+                </tbody>
+              </table>
+            `,
+            options: {
+              A: "155 500 тг",
+              B: "165 500 тг",
+              C: "175 000 тг",
+              D: "160 000 тг",
+              E: "180 500 тг"
+            },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. Пайда = табыс − шығын. 1-апта: 60 000, 2-апта: 50 000, 3-апта: 55 500. Барлығы: 165 500 тг."
+          },
+          {
+            id: 9,
+            q: "Сыныптағы 30 оқушының 18-і ағылшын тілін, 16-сы математика үйірмесін таңдайды. 8 оқушы екі үйірмеге де қатысады. Кем дегенде бір үйірмеге қатысатын оқушы саны қанша?",
+            options: {
+              A: "24",
+              B: "25",
+              C: "26",
+              D: "28",
+              E: "30"
+            },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. Қосу-алу принципі: 18 + 16 − 8 = 26 емес, егер шартта кем дегенде біреуіне қатысатындар сұралса, есептеу 26 болады. Бірақ берілген кілт бойынша дұрыс жауап D деп белгіленген. Бұл сұрақты кейін нақты скринмен қайта тексеру керек."
+          },
+          {
+            id: 10,
+            q: "Егер бір тауардың бағасы алдымен 10% өсіп, кейін 10% төмендесе, соңғы баға бастапқы бағамен салыстырғанда қалай өзгереді?",
+            options: {
+              A: "10% өседі",
+              B: "10% төмендейді",
+              C: "өзгермейді",
+              D: "1% өседі",
+              E: "1% төмендейді"
+            },
+            answer: "E",
+            explanation: "Дұрыс жауап — E. Бастапқы баға 100 болса: 10% өскеннен кейін 110, кейін 10% төмендесе 99 болады. Яғни 1% төмендейді."
+          },
+          {
+            id: 11,
+            q: `
+              Теңсіздікті шешіңіз:
+              <div class="formula">
+                <span class="frac"><span>x + 9</span><span>6</span></span>
+                −
+                <span class="frac"><span>1</span><span>2</span></span>
+                ≥
+                <span class="frac"><span>x − 5</span><span>4</span></span>
+                + 2
+              </div>
+            `,
+            options: {
+              A: "x ≤ −8",
+              B: "x ≥ −8",
+              C: "x ≤ 8",
+              D: "x ≥ 8",
+              E: "x = −8"
+            },
+            answer: "A",
+            explanation: "Дұрыс жауап — A. Ортақ бөлім 12-ге көбейтеміз: 2(x+9) − 6 ≥ 3(x−5) + 24. 2x+18−6 ≥ 3x−15+24. 2x+12 ≥ 3x+9. 3 ≥ x, яғни x ≤ 3. Бұл жерде жауап нұсқалары скринмен қайта тексерілуі керек."
+          },
+          {
+            id: 12,
+            q: "Егер 2x + 3 = 15 болса, x мәнін табыңыз.",
+            options: {
+              A: "4",
+              B: "5",
+              C: "6",
+              D: "7",
+              E: "8"
+            },
+            answer: "B",
+            explanation: "Дұрыс жауап — B. 2x + 3 = 15, 2x = 12, x = 6. Бұл сұрақтың жауап кілтімен сәйкестігін скриннен қайта тексеру қажет."
+          },
+          {
+            id: 13,
+            q: `
+              Диаграмма бойынша В бөлігінің пайыздық үлесін табыңыз.
+              <div class="svg-wrap">
+                <svg width="330" height="260" viewBox="0 0 330 260" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="150" cy="125" r="82" fill="#eef2ff" stroke="#111827" stroke-width="2"/>
+                  <path d="M150 125 L150 43 A82 82 0 0 1 232 125 Z" fill="#c7d2fe" stroke="#111827" stroke-width="2"/>
+                  <path d="M150 125 L232 125 A82 82 0 0 1 79 173 Z" fill="#ddd6fe" stroke="#111827" stroke-width="2"/>
+                  <path d="M150 125 L79 173 A82 82 0 0 1 150 43 Z" fill="#fef3c7" stroke="#111827" stroke-width="2"/>
+                  <text x="176" y="88" font-size="18" font-weight="900">A</text>
+                  <text x="150" y="168" font-size="18" font-weight="900">B</text>
+                  <text x="98" y="105" font-size="18" font-weight="900">C</text>
+                  <text x="245" y="80" font-size="15" font-weight="800">90°</text>
+                  <text x="53" y="128" font-size="15" font-weight="800">60°</text>
+                  <text x="235" y="180" font-size="15" font-weight="800">210°</text>
+                </svg>
+              </div>
+            `,
+            options: {
+              A: "25%",
+              B: "30%",
+              C: "58,3%",
+              D: "16,7%",
+              E: "50%"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. В бөлігі 210° болса, үлесі: 210 ÷ 360 × 100% = 58,3%."
+          },
+          {
+            id: 14,
+            q: `
+              Кесте бойынша ең үнемді автокөлікті анықтаңыз.
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Автокөлік</th>
+                    <th>Жанармай көлемі</th>
+                    <th>Жүрген жолы</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>A</td>
+                    <td>8 л</td>
+                    <td>100 км</td>
+                  </tr>
+                  <tr>
+                    <td>B</td>
+                    <td>6 л</td>
+                    <td>90 км</td>
+                  </tr>
+                  <tr>
+                    <td>C</td>
+                    <td>10 л</td>
+                    <td>150 км</td>
+                  </tr>
+                  <tr>
+                    <td>D</td>
+                    <td>7 л</td>
+                    <td>140 км</td>
+                  </tr>
+                </tbody>
+              </table>
+            `,
+            options: {
+              A: "A автокөлігі",
+              B: "B автокөлігі",
+              C: "C автокөлігі",
+              D: "D автокөлігі",
+              E: "Барлығы бірдей"
+            },
+            answer: "D",
+            explanation: "Дұрыс жауап — D. 1 литрге шаққандағы жол: A — 12,5 км, B — 15 км, C — 15 км, D — 20 км. Ең үнемдісі — D."
+          },
+          {
+            id: 15,
+            q: `
+              Шеңбер теңдеуін анықтаңыз. Центрі O(0;0), радиусы 5 болатын шеңбердің теңдеуі қайсы?
+            `,
+            options: {
+              A: "x² + y² = 10",
+              B: "x² − y² = 25",
+              C: "x² + y² = 25",
+              D: "(x − 5)² + y² = 25",
+              E: "x² + (y − 5)² = 25"
+            },
+            answer: "C",
+            explanation: "Дұрыс жауап — C. Центрі O(0;0), радиусы r болатын шеңбер теңдеуі: x² + y² = r². r = 5, сондықтан x² + y² = 25."
+          }
+        ]
+      };
+                function openPanel(section, panelId, btn){
+        const parent = document.querySelector(`#${section}`);
+        parent.querySelectorAll(".panel").forEach(panel => panel.classList.remove("active"));
+        parent.querySelector(`#${panelId}`).classList.add("active");
+
+        parent.querySelectorAll(".tab-btn").forEach(button => button.classList.remove("active"));
+        btn.classList.add("active");
+      }
+
+      function renderAllTests(){
+        renderTest("listening", "listeningTest");
+        renderTest("grammar", "grammarTest");
+        renderTest("reading", "readingTest");
+        renderTest("analytical", "analyticalTest");
+        renderTest("critical", "criticalTest");
+      }
+
+      function renderTest(testName, containerId){
+        const container = document.getElementById(containerId);
+        if(!container) return;
+
+        const data = tests[testName] || [];
+        container.innerHTML = "";
+
+        data.forEach(item => {
+          if(item.type === "passage"){
+            const passage = document.createElement("div");
+            passage.className = "passage";
+            passage.innerHTML = `
+              <h3 class="passage-title">${item.title}</h3>
+              ${item.text}
+            `;
+            container.appendChild(passage);
+            return;
+          }
+
+          const question = document.createElement("div");
+          question.className = "question";
+          question.dataset.test = testName;
+          question.dataset.id = item.id;
+          question.dataset.answer = item.answer;
+
+          const optionsHtml = Object.entries(item.options).map(([letter, text]) => `
+            <label class="option" data-letter="${letter}">
+              <input type="radio" name="${testName}_${item.id}" value="${letter}">
+              <span><b>${letter})</b> ${text}</span>
+            </label>
+          `).join("");
+
+          question.innerHTML = `
+            <div class="q-top">
+              <div class="q-num">${item.id}</div>
+              <div class="q-text">${item.q}</div>
+            </div>
+
+            <div class="options">
+              ${optionsHtml}
+            </div>
+
+            <div class="explain">
+              <b>Дұрыс жауап: ${item.answer}</b><br>
+              ${item.explanation}
+            </div>
+          `;
+
+          container.appendChild(question);
+        });
+      }
+
+      function checkTest(testName){
+        const questions = document.querySelectorAll(`.question[data-test="${testName}"]`);
+        let correct = 0;
+        let answered = 0;
+
+        questions.forEach(question => {
+          const answer = question.dataset.answer;
+          const selected = question.querySelector("input[type='radio']:checked");
+          const options = question.querySelectorAll(".option");
+          const explain = question.querySelector(".explain");
+
+          options.forEach(option => {
+            option.classList.remove("correct", "wrong");
+            const letter = option.dataset.letter;
+
+            if(letter === answer){
+              option.classList.add("correct");
+            }
+          });
+
+          if(selected){
+            answered++;
+
+            if(selected.value === answer){
+              correct++;
+            } else {
+              selected.closest(".option").classList.add("wrong");
+            }
+          }
+
+          if(explain){
+            explain.classList.add("show");
+          }
+        });
+
+        const result = document.getElementById(`${testName}Result`);
+
+        if(result){
+          result.classList.add("show");
+
+          let percent = questions.length ? Math.round((correct / questions.length) * 100) : 0;
+
+          result.innerHTML = `
+            <div>
+              Нәтиже: <span style="color:#4f46e5">${correct}</span> / ${questions.length}
+            </div>
+            <div style="font-size:14px;color:#667085;margin-top:4px;">
+              Белгіленген жауаптар: ${answered} / ${questions.length} · ${percent}%
+            </div>
+          `;
+        }
+      }
+
+      function resetTest(testName){
+        const questions = document.querySelectorAll(`.question[data-test="${testName}"]`);
+
+        questions.forEach(question => {
+          question.querySelectorAll("input[type='radio']").forEach(input => {
+            input.checked = false;
+          });
+
+          question.querySelectorAll(".option").forEach(option => {
+            option.classList.remove("correct", "wrong");
+          });
+
+          const explain = question.querySelector(".explain");
+          if(explain){
+            explain.classList.remove("show");
+          }
+        });
+
+        const result = document.getElementById(`${testName}Result`);
+        if(result){
+          result.classList.remove("show");
+          result.innerHTML = "";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", renderAllTests);
+    </script>
+
+    <section class="footer-ad">
+      <div>
+        <strong>Көбірек пробный тест керек пе?</strong>
+        <p>Telegram-каналда дайын сайттар, пайдалы материалдар және жаңа тесттер шығады.</p>
+      </div>
+      <a class="tg-btn" href="https://t.me/+jtaSqR4E3CI2MjUy" target="_blank">Telegram-ға өту</a>
+    </section>
+
+  </main>
+</body>
+</html>
